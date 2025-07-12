@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ author.name }} - Book Review Blog</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .author-info {
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #fafafa;
+        border-radius: 5px;
+      }
+      .book {
+        border: 1px solid #ddd;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 5px;
+        background: #fafafa;
+      }
+      .book h3 a {
+        color: #333;
+        text-decoration: none;
+      }
+      .book h3 a:hover {
+        color: #007cba;
+        text-decoration: underline;
+      }
+      .stars {
+        color: gold;
+        font-size: 18px;
+      }
+      .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #007cba;
+        text-decoration: none;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="{% url 'blog:home' %}" class="back-link">← Back to Books</a>
+
+      <div class="author-info">
+        <h1>{{ author.name }}</h1>
+        {% if author.birth_date %}
+        <p><strong>Born:</strong> {{ author.birth_date|date:"F j, Y" }}</p>
+        {% endif %} {% if author.website %}
+        <p>
+          <strong>Website:</strong>
+          <a href="{{ author.website }}" target="_blank"
+            >{{ author.website }}</a
+          >
+        </p>
+        {% endif %} {% if author.bio %}
+        <div style="margin-top: 15px">
+          <h3>Biography</h3>
+          <p>{{ author.bio|linebreaks }}</p>
+        </div>
+        {% endif %}
+      </div>
+
+      <h2>Books by {{ author.name }}</h2>
+      {% for book in books %}
+      <div class="book">
+        <h3>
+          <a href="{% url 'blog:book-detail' book.slug %}">{{ book.title }}</a>
+        </h3>
+        <p><strong>Genre:</strong> {{ book.get_genre_display }}</p>
+        {% if book.publication_date %}
+        <p>
+          <strong>Published:</strong> {{ book.publication_date|date:"F Y" }}
+        </p>
+        {% endif %} {% if book.average_rating > 0 %}
+        <p class="stars">
+          <strong>Rating:</strong> ★★★★★ ({{ book.average_rating|floatformat:1
+          }})
+        </p>
+        {% endif %} {% if book.description %}
+        <p>{{ book.description|truncatewords:30 }}</p>
+        {% endif %}
+        <p>
+          <small
+            >{{ book.reviews.count }} review{{ book.reviews.count|pluralize
+            }}</small
+          >
+        </p>
+      </div>
+      {% empty %}
+      <p>No books found for this author.</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

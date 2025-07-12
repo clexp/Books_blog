@@ -1,0 +1,53 @@
+Book Review Blog License
+
+Copyright (c) 2025 Chris Lewis
+
+This project contains code and content under different licenses:
+
+## Django Framework Components
+
+Files that are part of the Django framework (including but not limited to Django's
+built-in functionality, admin interface components, and core framework features)
+remain under their original Django license (BSD 3-Clause License).
+
+Django is copyright (c) Django Software Foundation and individual contributors.
+All rights reserved.
+
+## Original Work by Chris Lewis
+
+All other files including but not limited to:
+
+- Custom application code (models, views, templates, admin customizations)
+- HTML templates and CSS styling
+- Project configuration and settings
+- Documentation and README content
+- Custom JavaScript and frontend code
+- Database schema design
+- Business logic and application-specific functionality
+
+Are licensed under the following terms:
+
+Copyright (c) 2025 Chris Lewis
+
+All rights reserved. No part of this software may be reproduced, distributed,
+or transmitted in any form or by any means, including photocopying, recording,
+or other electronic or mechanical methods, without the prior written permission
+of Chris Lewis, except in the case of brief quotations embodied in critical
+reviews and certain other noncommercial uses permitted by copyright law.
+
+For permission requests, contact: [your.email@example.com]
+
+## Third-Party Dependencies
+
+This project uses various third-party libraries and packages, each of which
+may have its own license. See requirements.txt for a full list of dependencies.
+
+## Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
