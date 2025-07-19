@@ -1,0 +1,130 @@
+---
+description: Django Development Rules - Work WITH Django, Not Against It
+globs: ["**/*.py", "**/*.html", "**/urls.py", "**/views.py", "**/models.py"]
+alwaysApply: true
+---
+
+# Django Development Rules
+
+## Core Philosophy: Work WITH Django, Not Against It
+
+When working with Django projects, always follow these rules:
+
+### 1. Django Workflow (MANDATORY ORDER)
+
+1. **URLs First** - Define URL patterns in urls.py
+2. **Views Second** - Handle logic and data retrieval in views.py
+3. **Templates Last** - Keep templates simple and focused on presentation
+
+### 2. Template Rules (CRITICAL)
+
+- **NEVER** create complex template logic
+- **NEVER** split conditional statements across multiple lines incorrectly
+- **ALWAYS** keep templates simple and readable
+- **ALWAYS** let views handle data processing
+- **ALWAYS** use proper Django template syntax
+
+### 3. Template Syntax Protection (EMERGENCY RULES)
+
+**CRITICAL: NEVER Modify These Template Patterns:**
+
+- `{% if %}` / `{% endif %}` pairs
+- `{% for %}` / `{% endfor %}` loops
+- `{% empty %}` blocks
+- Any template tag that spans multiple lines
+
+**When Template Errors Occur:**
+
+1. **STOP** - Do not attempt to "fix" template syntax
+2. **SIMPLIFY** - Replace complex conditionals with simple alternatives
+3. **REWRITE** - Create a new, clean template from scratch
+4. **TEST** - Verify with minimal template first
+
+**Template Modification Rules:**
+
+- **NEVER** split `{% if %}` statements across multiple lines
+- **NEVER** modify existing `{% endif %}` tags
+- **ALWAYS** keep conditional statements on single lines
+- **ALWAYS** test with a completely new template if syntax errors persist
+
+**Emergency Template Reset:**
+If template syntax errors persist:
+
+1. Create a completely new template file
+2. Use only simple, single-line template tags
+3. Avoid complex conditional logic
+4. Let Django handle the rendering naturally
+
+### 4. Template Best Practices
+
+```django
+<!-- GOOD: Simple, clean syntax -->
+{% for book in books %}
+<div class="book-card">
+    <h3>{{ book.title }}</h3>
+    <p>by {{ book.author.name }}</p>
+    <p>{{ book.reviews.count }} reviews</p>
+</div>
+{% empty %}
+<p>No books available.</p>
+{% endfor %}
+```
+
+### 5. View Best Practices
+
+- Use Django's ORM properly with select_related/prefetch_related
+- Handle business logic in views, not templates
+- Pass clean, processed data to templates
+- Use class-based views when appropriate
+
+### 6. Debugging Template Issues
+
+When encountering template syntax errors:
+
+- Check for malformed `{% if %}` / `{% endif %}` pairs
+- Ensure proper tag nesting
+- Simplify complex conditional logic
+- Move logic to views if needed
+- Check Django debug output for specific line numbers
+
+### 7. Key Principles
+
+1. **Django Knows Best** - Trust Django's conventions
+2. **Keep It Simple** - Complex logic belongs in views, not templates
+3. **Test Incrementally** - Build and test each component separately
+4. **Read Error Messages** - Django provides clear error information
+5. **Work WITH the Framework** - Don't fight Django's patterns
+
+### 8. Remember
+
+**The goal is to let Django do what it does best:**
+
+- Handle URL routing
+- Process data in views
+- Render clean templates
+
+**Don't try to make Django something it's not.**
+
+### 9. Template Debugging Checklist
+
+When encountering template errors:
+
+- [ ] Check for malformed `{% if %}` / `{% endif %}` pairs
+- [ ] Ensure proper nesting of template tags
+- [ ] Simplify complex conditional logic
+- [ ] Move data processing to views
+- [ ] Test with minimal template first
+- [ ] Check Django debug output for specific line numbers
+
+### 10. Common Template Mistakes to Avoid
+
+- Splitting conditional statements across lines incorrectly
+- Mixing `{% if %}` and `{% endif %}` tags improperly
+- Creating complex template logic that should be in views
+- Ignoring Django's template syntax rules
+- Fighting Django's template engine behavior
+  description:
+  globs:
+  alwaysApply: false
+
+---

@@ -1,0 +1,83 @@
+# Django Development Rules for Cursor
+
+## Core Philosophy: Work WITH Django, Not Against It
+
+When working with Django projects, always follow these rules:
+
+### 1. Django Workflow (MANDATORY ORDER)
+1. **URLs First** - Define URL patterns in urls.py
+2. **Views Second** - Handle logic and data retrieval in views.py  
+3. **Templates Last** - Keep templates simple and focused on presentation
+
+### 2. Template Rules (CRITICAL)
+- **NEVER** create complex template logic
+- **NEVER** split conditional statements across multiple lines incorrectly
+- **ALWAYS** keep templates simple and readable
+- **ALWAYS** let views handle data processing
+- **ALWAYS** use proper Django template syntax
+
+### 3. When Template Errors Occur
+1. **STOP** trying to fix complex template logic
+2. **SIMPLIFY** the template immediately
+3. **MOVE** logic to views if needed
+4. **TEST** with minimal templates first
+5. **READ** Django's error messages carefully
+
+### 4. Template Best Practices
+```django
+<!-- GOOD: Simple, clean syntax -->
+{% for book in books %}
+<div class="book-card">
+    <h3>{{ book.title }}</h3>
+    <p>by {{ book.author.name }}</p>
+    <p>{{ book.reviews.count }} reviews</p>
+</div>
+{% empty %}
+<p>No books available.</p>
+{% endfor %}
+```
+
+### 5. View Best Practices
+- Use Django's ORM properly with select_related/prefetch_related
+- Handle business logic in views, not templates
+- Pass clean, processed data to templates
+- Use class-based views when appropriate
+
+### 6. Debugging Template Issues
+When encountering template syntax errors:
+- Check for malformed `{% if %}` / `{% endif %}` pairs
+- Ensure proper tag nesting
+- Simplify complex conditional logic
+- Move logic to views if needed
+- Check Django debug output for specific line numbers
+
+### 7. Key Principles
+1. **Django Knows Best** - Trust Django's conventions
+2. **Keep It Simple** - Complex logic belongs in views, not templates
+3. **Test Incrementally** - Build and test each component separately
+4. **Read Error Messages** - Django provides clear error information
+5. **Work WITH the Framework** - Don't fight Django's patterns
+
+### 8. Remember
+**The goal is to let Django do what it does best:**
+- Handle URL routing
+- Process data in views  
+- Render clean templates
+
+**Don't try to make Django something it's not.**
+
+### 9. Template Debugging Checklist
+When encountering template errors:
+- [ ] Check for malformed `{% if %}` / `{% endif %}` pairs
+- [ ] Ensure proper nesting of template tags
+- [ ] Simplify complex conditional logic
+- [ ] Move data processing to views
+- [ ] Test with minimal template first
+- [ ] Check Django debug output for specific line numbers
+
+### 10. Common Template Mistakes to Avoid
+- Splitting conditional statements across lines incorrectly
+- Mixing `{% if %}` and `{% endif %}` tags improperly
+- Creating complex template logic that should be in views
+- Ignoring Django's template syntax rules
+- Fighting Django's template engine behavior 

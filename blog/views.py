@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q, Avg, Count
 from django.core.paginator import Paginator
@@ -134,4 +134,15 @@ class SearchView(ListView):
         """Add search query to context."""
         context = super().get_context_data(**kwargs)
         context['query'] = self.request.GET.get('q', '')
+        return context
+
+
+class AboutView(TemplateView):
+    """Static about page with architecture information."""
+    template_name = 'blog/about.html'
+    
+    def get_context_data(self, **kwargs):
+        """Add context for the about page."""
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'About This Project'
         return context

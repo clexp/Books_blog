@@ -3,109 +3,390 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ author.name }} - Book Review Blog</title>
+    <title>{{ author.name }} - Literary Chronicles</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        margin: 40px;
-        background-color: #f5f5f5;
+        font-family: "Georgia", serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        line-height: 1.6;
       }
+
       .container {
         max-width: 1200px;
         margin: 0 auto;
-        background: white;
         padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
-      .author-info {
-        margin-bottom: 30px;
-        padding: 20px;
-        background: #fafafa;
-        border-radius: 5px;
-      }
-      .book {
-        border: 1px solid #ddd;
-        margin: 20px 0;
-        padding: 20px;
-        border-radius: 5px;
-        background: #fafafa;
-      }
-      .book h3 a {
-        color: #333;
-        text-decoration: none;
-      }
-      .book h3 a:hover {
-        color: #007cba;
-        text-decoration: underline;
-      }
-      .stars {
-        color: gold;
-        font-size: 18px;
-      }
+
       .back-link {
-        display: inline-block;
-        margin-bottom: 20px;
-        color: #007cba;
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 30px;
+        color: #4f46e5;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 10px 20px;
+        background: white;
+        border-radius: 25px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         text-decoration: none;
       }
-      .back-link:hover {
+
+      .author-header {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+      }
+
+      .author-photo-section {
+        flex-shrink: 0;
+        text-align: center;
+      }
+
+      .author-photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #4f46e5;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+      }
+
+      .author-photo.placeholder {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 4rem;
+        font-weight: bold;
+      }
+
+      .author-info {
+        flex-grow: 1;
+      }
+
+      .author-name {
+        color: #2d3748;
+        font-size: 3rem;
+        margin: 0 0 20px 0;
+        font-weight: bold;
+      }
+
+      .author-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .detail-item {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        padding: 20px;
+        border-radius: 15px;
+        border-left: 4px solid #4f46e5;
+      }
+
+      .detail-label {
+        font-weight: bold;
+        color: #4f46e5;
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .detail-value {
+        color: #2d3748;
+        font-size: 1.1rem;
+      }
+
+      .detail-value a {
+        color: #4f46e5;
+        text-decoration: none;
+      }
+
+      .detail-value a:hover {
         text-decoration: underline;
+      }
+
+      .author-bio {
+        margin-top: 30px;
+      }
+
+      .bio-title {
+        color: #2d3748;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        border-bottom: 3px solid #4f46e5;
+        padding-bottom: 10px;
+      }
+
+      .bio-content {
+        color: #4a5568;
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      .books-section {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-title {
+        color: #2d3748;
+        font-size: 2.2rem;
+        margin: 0 0 30px 0;
+        text-align: center;
+        border-bottom: 3px solid #4f46e5;
+        padding-bottom: 15px;
+      }
+
+      .books-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .book-card {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        border-radius: 15px;
+        padding: 25px;
+        border-left: 5px solid #4f46e5;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .book-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        border-left-color: #7c3aed;
+      }
+
+      .book-title {
+        margin: 0 0 15px 0;
+        font-size: 1.4rem;
+      }
+
+      .book-title a {
+        color: #2d3748;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .book-title a:hover {
+        color: #4f46e5;
+      }
+
+      .book-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+      }
+
+      .meta-item {
+        color: #666;
+      }
+
+      .meta-label {
+        font-weight: bold;
+        color: #4f46e5;
+      }
+
+      .book-description {
+        color: #4a5568;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .book-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 15px;
+        border-top: 1px solid #e2e8f0;
+        font-size: 0.9rem;
+      }
+
+      .stars {
+        color: #fbbf24;
+        font-size: 1rem;
+      }
+
+      .review-count {
+        color: #666;
+      }
+
+      .no-books {
+        text-align: center;
+        padding: 60px 20px;
+        color: #666;
+      }
+
+      .no-books h3 {
+        color: #4a5568;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .author-header {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 30px 20px;
+        }
+
+        .author-name {
+          font-size: 2.2rem;
+        }
+
+        .author-details {
+          grid-template-columns: 1fr;
+        }
+
+        .books-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .book-meta {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 10px;
+        }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <a href="{% url 'blog:home' %}" class="back-link">← Back to Books</a>
+      <a href="{% url 'blog:home' %}" class="back-link"> ← Back to Books </a>
 
-      <div class="author-info">
-        <h1>{{ author.name }}</h1>
-        {% if author.birth_date %}
-        <p><strong>Born:</strong> {{ author.birth_date|date:"F j, Y" }}</p>
-        {% endif %} {% if author.website %}
-        <p>
-          <strong>Website:</strong>
-          <a href="{{ author.website }}" target="_blank"
-            >{{ author.website }}</a
-          >
-        </p>
-        {% endif %} {% if author.bio %}
-        <div style="margin-top: 15px">
-          <h3>Biography</h3>
-          <p>{{ author.bio|linebreaks }}</p>
+      <div class="author-header">
+        <div class="author-photo-section">
+          {% if author.profile_image %}
+          <img
+            src="{{ author.profile_image.url }}"
+            alt="{{ author.name }}"
+            class="author-photo"
+          />
+          {% else %}
+          <div class="author-photo placeholder">{{ author.name|first }}</div>
+          {% endif %}
         </div>
-        {% endif %}
+
+        <div class="author-info">
+          <h1 class="author-name">{{ author.name }}</h1>
+
+          <div class="author-details">
+            {% if author.birth_date %}
+            <div class="detail-item">
+              <div class="detail-label">Born</div>
+              <div class="detail-value">
+                {{ author.birth_date|date:"F j, Y" }}
+              </div>
+            </div>
+            {% endif %} {% if author.website %}
+            <div class="detail-item">
+              <div class="detail-label">Website</div>
+              <div class="detail-value">
+                <a href="{{ author.website }}" target="_blank"
+                  >Visit Author's Website</a
+                >
+              </div>
+            </div>
+            {% endif %}
+
+            <div class="detail-item">
+              <div class="detail-label">Books Published</div>
+              <div class="detail-value">
+                {{ books|length }} book{{ books|length|pluralize }}
+              </div>
+            </div>
+          </div>
+
+          {% if author.bio %}
+          <div class="author-bio">
+            <h3 class="bio-title">About the Author</h3>
+            <div class="bio-content">{{ author.bio|linebreaks }}</div>
+          </div>
+          {% endif %}
+        </div>
       </div>
 
-      <h2>Books by {{ author.name }}</h2>
-      {% for book in books %}
-      <div class="book">
-        <h3>
-          <a href="{% url 'blog:book-detail' book.slug %}">{{ book.title }}</a>
-        </h3>
-        <p><strong>Genre:</strong> {{ book.get_genre_display }}</p>
-        {% if book.publication_date %}
-        <p>
-          <strong>Published:</strong> {{ book.publication_date|date:"F Y" }}
-        </p>
-        {% endif %} {% if book.average_rating > 0 %}
-        <p class="stars">
-          <strong>Rating:</strong> ★★★★★ ({{ book.average_rating|floatformat:1
-          }})
-        </p>
-        {% endif %} {% if book.description %}
-        <p>{{ book.description|truncatewords:30 }}</p>
-        {% endif %}
-        <p>
-          <small
-            >{{ book.reviews.count }} review{{ book.reviews.count|pluralize
-            }}</small
-          >
-        </p>
+      <div class="books-section">
+        <h2 class="section-title">Books by {{ author.name }}</h2>
+
+        <div class="books-grid">
+          {% for book in books %}
+          <div class="book-card">
+            <h3 class="book-title">
+              <a href="{% url 'blog:book-detail' book.slug %}"
+                >{{ book.title }}</a
+              >
+            </h3>
+
+            <div class="book-meta">
+              <div class="meta-item">
+                <span class="meta-label">Genre:</span> {{ book.get_genre_display
+                }}
+              </div>
+              {% if book.publication_date %}
+              <div class="meta-item">
+                <span class="meta-label">Published:</span> {{
+                book.publication_date|date:"Y" }}
+              </div>
+              {% endif %}
+            </div>
+
+            {% if book.description %}
+            <div class="book-description">
+              {{ book.description|truncatewords:25 }}
+            </div>
+            {% endif %}
+
+            <div class="book-footer">
+              <div>
+                {% if book.average_rating > 0 %}
+                <span class="stars">★★★★★</span>
+                <span style="color: #666; margin-left: 5px"
+                  >{{ book.average_rating|floatformat:1 }}</span
+                >
+                {% endif %}
+              </div>
+
+              <div class="review-count">
+                {{ book.reviews.count }} review{% if book.reviews.count != 1
+                %}s{% endif %}
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <div class="no-books">
+            <h3>No books yet</h3>
+            <p>This author hasn't published any books in our collection yet.</p>
+          </div>
+          {% endfor %}
+        </div>
       </div>
-      {% empty %}
-      <p>No books found for this author.</p>
-      {% endfor %}
     </div>
   </body>
 </html>

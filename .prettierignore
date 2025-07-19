@@ -1,0 +1,11 @@
+# Django templates
+*.html
+templates/
+blog/templates/
+
+# Python files (if using Black)
+*.py
+
+# Django specific
+migrations/
+*.sqlite3 

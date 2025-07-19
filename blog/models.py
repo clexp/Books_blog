@@ -14,6 +14,12 @@ class Author(models.Model):
     bio = models.TextField(blank=True, help_text="Brief biography of the author")
     website = models.URLField(blank=True, help_text="Author's official website")
     birth_date = models.DateField(null=True, blank=True, help_text="Author's birth date")
+    profile_image = models.ImageField(
+        upload_to='author_photos/',
+        blank=True,
+        null=True,
+        help_text="Author's profile photo"
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

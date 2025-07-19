@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Literary Chronicles</title>
+    <style>
+      body {
+        font-family: "Georgia", serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23667eea"/><stop offset="100%" stop-color="%23764ba2"/></linearGradient></defs><rect fill="url(%23bg)" width="1200" height="600"/><g fill="%23ffffff" opacity="0.1"><circle cx="200" cy="150" r="3"/><circle cx="400" cy="250" r="2"/><circle cx="600" cy="100" r="4"/><circle cx="800" cy="300" r="2"/><circle cx="1000" cy="200" r="3"/><rect x="150" y="400" width="20" height="150" rx="10"/><rect x="200" y="420" width="15" height="130" rx="7"/><rect x="250" y="390" width="18" height="160" rx="9"/></g></svg>');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+        position: relative;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin: 0 0 20px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+      }
+
+      .hero p {
+        font-size: 1.4rem;
+        margin: 0;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .back-link {
+        position: fixed;
+        top: 30px;
+        left: 30px;
+        display: inline-flex;
+        align-items: center;
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 12px 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        z-index: 100;
+      }
+
+      .back-link:hover {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+        text-decoration: none;
+        transform: translateY(-2px);
+      }
+
+      .content-section {
+        background: white;
+        margin: -50px auto 40px auto;
+        max-width: 1000px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 10;
+      }
+
+      .content-padding {
+        padding: 60px 50px;
+      }
+
+      .section-title {
+        color: #2d3748;
+        font-size: 2.5rem;
+        margin: 0 0 30px 0;
+        text-align: center;
+        border-bottom: 3px solid #4f46e5;
+        padding-bottom: 20px;
+      }
+
+      .intro-text {
+        font-size: 1.2rem;
+        color: #4a5568;
+        text-align: center;
+        margin-bottom: 50px;
+        line-height: 1.8;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-bottom: 50px;
+      }
+
+      .feature-card {
+        text-align: center;
+        padding: 30px;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        border-radius: 15px;
+        border-top: 4px solid #4f46e5;
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .feature-title {
+        color: #2d3748;
+        font-size: 1.4rem;
+        margin: 0 0 15px 0;
+        font-weight: bold;
+      }
+
+      .feature-description {
+        color: #4a5568;
+        line-height: 1.6;
+      }
+
+      .stats-section {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        color: white;
+        padding: 40px;
+        border-radius: 15px;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+      }
+
+      .stat-item {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+
+      .mission-section {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        padding: 40px;
+        border-radius: 15px;
+        margin-bottom: 40px;
+      }
+
+      .mission-title {
+        color: #2d3748;
+        font-size: 2rem;
+        margin: 0 0 20px 0;
+        text-align: center;
+      }
+
+      .mission-text {
+        color: #4a5568;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .content-padding {
+          padding: 40px 30px;
+        }
+
+        .back-link {
+          position: relative;
+          top: auto;
+          left: auto;
+          margin: 20px;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="{% url 'blog:home' %}" class="back-link"> ← Back to Books </a>
+
+    <div class="hero">
+      <h1>About Literary Chronicles</h1>
+      <p>
+        Where passionate readers discover their next great adventure through
+        thoughtful reviews and curated recommendations
+      </p>
+    </div>
+
+    <div class="content-section">
+      <div class="content-padding">
+        <h2 class="section-title">Welcome to Our Literary Community</h2>
+
+        <p class="intro-text">
+          Literary Chronicles is more than just a book review blog—it's a
+          carefully curated space where book lovers can discover hidden gems,
+          revisit classics, and explore diverse voices in literature. Our
+          mission is to bridge the gap between great books and discerning
+          readers.
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-icon">📚</span>
+            <h3 class="feature-title">Curated Reviews</h3>
+            <p class="feature-description">
+              In-depth, thoughtful reviews that go beyond simple ratings to
+              explore themes, writing style, and the reading experience.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-icon">🔍</span>
+            <h3 class="feature-title">Diverse Discovery</h3>
+            <p class="feature-description">
+              From bestsellers to indie gems, classic literature to contemporary
+              voices— we celebrate the full spectrum of great writing.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-icon">👥</span>
+            <h3 class="feature-title">Reader Community</h3>
+            <p class="feature-description">
+              Connect with fellow book enthusiasts, share recommendations, and
+              join conversations about the books that move us.
+            </p>
+          </div>
+        </div>
+
+        <div class="stats-section">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">Books Reviewed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">1,200+</div>
+              <div class="stat-label">Reader Reviews</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Featured Authors</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">25</div>
+              <div class="stat-label">Genres Covered</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mission-section">
+          <h3 class="mission-title">Our Mission</h3>
+          <p class="mission-text">
+            We believe that every reader deserves to find books that speak to
+            their soul. Through careful curation, honest reviews, and a passion
+            for storytelling in all its forms, we aim to be your trusted guide
+            in the vast landscape of literature. Whether you're seeking your
+            next page-turner, exploring a new genre, or looking to deepen your
+            appreciation of the written word, Literary Chronicles is here to
+            illuminate the path.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -22,4 +22,7 @@ urlpatterns = [
     
     # Search functionality
     path('search/', views.SearchView.as_view(), name='search'),
+    
+    # About page
+    path('about/', views.AboutView.as_view(), name='about'),
 ] 
