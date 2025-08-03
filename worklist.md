@@ -13,6 +13,13 @@
 - [x] add draft/published status system for reviews (Aug 2025)
 - [x] link book cover images to books (Aug 2025)
 - [x] create backdrop images from book covers (Aug 2025)
+- [x] reorganize book images - separate open/closed book images (Aug 2025)
+- [x] add search functionality with Django Q objects (Aug 2025)
+- [x] add thumbnail display to book list page (Aug 2025)
+- [x] add book_images field to Review model (Aug 2025)
+- [x] organize backdrop images by purpose (portrait/landscape/small) (Aug 2025)
+- [x] implement backdrop image processing pipeline (Aug 2025)
+- [x] update construction log with detailed documentation (Aug 2025)
 
 ## High Priority - Production Deployment
 
@@ -26,21 +33,22 @@
 
 ## Medium Priority - Content Management
 
-- [ ] correct image links - match right image to right book
+- [ ] upload open book images to review records (book_images field)
+- [ ] add closed book cover images to book records (cover_image field)
 - [ ] add all authors for unreviewed books
 - [ ] add all unregistered books to database
 - [ ] write reviews for all unreviewed books
-- [ ] consider moving current book images to review body
-- [ ] add new book-shaped images for book slots (current images are reading/holding photos)
-- [ ] organize backdrop bookshelf images for site-wide use
-- [ ] organize list card desaturated images for listing page
+- [ ] integrate backdrop images into website templates
+- [ ] test and refine image display on mobile devices
 
 ## Medium Priority - Site Features
 
 - [ ] add a contact form to the project
 - [ ] add a 'copyright' page to the project footer
 - [ ] add socials to the project footer
-- [ ] add search functionality improvements
+- [ ] enhance search functionality (filters, sorting)
+- [ ] add pagination to search results
+- [ ] implement responsive design improvements
 
 ## Future Enhancements
 
