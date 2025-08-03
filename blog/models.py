@@ -71,6 +71,8 @@ class BackdropImage(models.Model):
             img = self._apply_sepia(img)
         elif self.processing_style == 'greyscale':
             img = img.convert('L').convert('RGB')
+        elif self.processing_style == 'whitened':
+            img = self._whiten_backdrop(img)
         
         # Resize for web optimization (max 1920px width)
         img = self._resize_image(img, max_width=1920)
@@ -120,6 +122,24 @@ class BackdropImage(models.Model):
         ratio = max_width / img.width
         new_height = int(img.height * ratio)
         return img.resize((max_width, new_height), Image.Resampling.LANCZOS)
+
+    def _whiten_backdrop(self, img):
+        """Create a whitened backdrop effect by increasing brightness and reducing contrast."""
+        from PIL import ImageEnhance
+        
+        # Increase brightness
+        enhancer = ImageEnhance.Brightness(img)
+        img = enhancer.enhance(1.3)  # 30% brighter
+        
+        # Reduce contrast slightly
+        enhancer = ImageEnhance.Contrast(img)
+        img = enhancer.enhance(0.8)  # 20% less contrast
+        
+        # Reduce saturation
+        enhancer = ImageEnhance.Color(img)
+        img = enhancer.enhance(0.6)  # 40% less saturation
+        
+        return img
 
     def save(self, *args, **kwargs):
         """Override save to process image if original has changed."""
