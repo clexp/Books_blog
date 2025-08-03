@@ -1,0 +1,9 @@
+{
+  "title": "The 100 Page Machine Learning Handbook",
+  "author": "Unknown",
+  "review_date": "2025-01-01",
+  "description": "Book review, The 100 Page Machine Learning Handbook, by Andriy Burkov",
+  "content": "## This was...\n\nThis is a small and light book which covers all of the basic fields of machine learning maths. To achieve this, it does it succinctly and lightly using dense mathematical notation.\n\n## I already knew...\n\nI already knew some of the basic calculus, but the methods described here were largely new to me.\n\n## What was new...\n\nEverything from regression to support vector machines to deep learning. Reading this book requires some attention so it's not bedtime reading. I would recommend taking notes if you are reading through this and possibly implementing some code that does some of these. You will find Python libraries for some of this.\n\n## I particularly liked...\n\nI like it that the vast field of machine learning can be covered in such a light book. This was still quite succinct and dense.\n",
+  "rating": null,
+  "source_file": "The 100 Page Machine Learning Handbook.md"
+}

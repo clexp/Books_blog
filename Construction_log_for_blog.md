@@ -178,3 +178,253 @@ The journey from "it should work" to "it does work" involved understanding not j
 ---
 
 _This post chronicles the real-world challenges of building a Django application while navigating modern development tooling. The key lesson? Always consider the full development environment, not just your framework of choice._
+
+---
+
+## Part 2: Image Management and Search Implementation
+
+### The Challenge: Open vs. Closed Book Images
+
+After the initial template syntax issues were resolved, I faced a new challenge: **image organization**. My book collection had two types of images:
+
+1. **Open book images** - Photos of books with pages spread open (useful for reviews)
+2. **Closed book covers** - Traditional cover images (better for thumbnails and listings)
+
+The problem? All images were mixed together in the `book_covers/` folder, and the wrong type was being used for different purposes.
+
+### Step 1: Image Reorganization Strategy
+
+I needed to:
+
+- Separate open book images from closed covers
+- Remove open book images from book records (they're not proper covers)
+- Add open book images to review records (where they belong)
+- Create a default placeholder for books without covers
+- Add thumbnail display to the book list page
+
+### Step 2: Creating the Reorganization Command
+
+I created a Django management command to handle the image migration:
+
+```bash
+# File: blog/management/commands/reorganize_book_images.py
+```
+
+**Key Features:**
+
+- Dry-run mode for safety testing
+- Moves open book images to `open_book_images/` folder
+- Clears `cover_image` fields from book records
+- Creates a default placeholder image
+- Provides detailed logging of all operations
+
+**Usage:**
+
+```bash
+# Test run first
+python manage.py reorganize_book_images --dry-run
+
+# Execute the reorganization
+python manage.py reorganize_book_images
+```
+
+### Step 3: Database Schema Enhancement
+
+I added a new field to the Review model to store open book images:
+
+```python
+# In blog/models.py - Review model
+book_images = models.ImageField(
+    upload_to='open_book_images/',
+    blank=True,
+    null=True,
+    help_text="Images of the open book for the review"
+)
+```
+
+**Migration Process:**
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### Step 4: Template Updates for Image Display
+
+#### Book List Page (Thumbnails on Right)
+
+I updated the book list template to show thumbnails with text wrapping:
+
+```html
+<!-- blog/templates/blog/book_list.html -->
+<div class="book-card">
+  <div class="book-info">
+    <!-- Text content on left -->
+  </div>
+  <div class="book-cover-thumb">
+    <!-- Thumbnail on right -->
+  </div>
+</div>
+```
+
+**CSS Styling:**
+
+```css
+.book-card {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.book-cover-thumb {
+  flex-shrink: 0;
+  width: 80px;
+  height: 120px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+```
+
+#### Book Detail Page (Review Images)
+
+I enhanced the review display to show open book images alongside review text:
+
+```html
+<!-- blog/templates/blog/book_detail.html -->
+<div class="review-content">
+  {% if review.book_images %}
+  <div class="review-with-image">
+    <div class="review-text">{{ review.content|linebreaks }}</div>
+    <div class="review-image">
+      <img
+        src="{{ review.book_images.url }}"
+        alt="Book image for {{ review.title }}"
+      />
+    </div>
+  </div>
+  {% else %} {{ review.content|linebreaks }} {% endif %}
+</div>
+```
+
+**CSS for Review Images:**
+
+```css
+.review-with-image {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.review-text {
+  flex-grow: 1;
+}
+
+.review-image {
+  flex-shrink: 0;
+  width: 30%;
+  max-width: 200px;
+}
+```
+
+### Step 5: Search Functionality Implementation
+
+I implemented a comprehensive search system using Django's Q objects for complex queries.
+
+#### Search View Implementation
+
+```python
+# In blog/views.py
+class SearchView(ListView):
+    model = Book
+    template_name = 'blog/search_results.html'
+    context_object_name = 'books'
+    paginate_by = 12
+
+    def get_queryset(self):
+        query = self.request.GET.get('q', '')
+        if not query:
+            return Book.objects.none()
+
+        return Book.objects.filter(
+            Q(title__icontains=query) |
+            Q(author__name__icontains=query) |
+            Q(description__icontains=query) |
+            Q(isbn__icontains=query)
+        ).select_related('author').prefetch_related('reviews').distinct()
+```
+
+#### Search Templates
+
+**Home Page Search Form:**
+
+```html
+<!-- Added to blog/templates/blog/book_list.html -->
+<div class="search-section">
+  <form method="get" action="{% url 'blog:search' %}" class="search-form">
+    <input
+      type="text"
+      name="q"
+      placeholder="Search for books, authors, or descriptions..."
+      class="search-input"
+      required
+    />
+    <button type="submit" class="search-button">🔍 Search</button>
+  </form>
+</div>
+```
+
+**Search Results Page:**
+
+```html
+<!-- blog/templates/blog/search_results.html -->
+<!-- Complete search results template with consistent styling -->
+```
+
+### Step 6: URL Configuration
+
+The search URL was already configured in `blog/urls.py`:
+
+```python
+path('search/', views.SearchView.as_view(), name='search'),
+```
+
+### Results and Testing
+
+After implementing these changes:
+
+1. **Image Reorganization:** Successfully moved 16 open book images to the new folder
+2. **Database Migration:** Applied successfully without data loss
+3. **Template Updates:** Thumbnails now display on the right side with text wrapping
+4. **Search Functionality:** Full-text search across titles, authors, descriptions, and ISBNs
+
+**Testing Commands:**
+
+```bash
+# Test image reorganization
+python manage.py reorganize_book_images --dry-run
+
+# Apply migrations
+python manage.py migrate
+
+# Start development server
+python manage.py runserver
+```
+
+### Key Technical Decisions
+
+1. **Image Organization:** Separated concerns by moving open book images to reviews where they belong
+2. **Responsive Design:** Used flexbox for layout that works on mobile and desktop
+3. **Search Implementation:** Used Django's Q objects for efficient database queries
+4. **Template Structure:** Maintained consistency between book list and search results
+
+### Next Steps Identified
+
+1. **Git Commit:** Version control the current state
+2. **Background Image Processing:** Implement desaturation/washout for backdrop images
+3. **Closed Cover Upload:** Add proper closed book cover images to book records
+
+---
+
+_This section demonstrates the importance of systematic problem-solving and the value of Django's built-in tools for database management and search functionality._

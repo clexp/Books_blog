@@ -1,0 +1,83 @@
+[
+  {
+    "title": "The Prag Prog",
+    "author": "Unknown",
+    "review_date": "2025-01-01",
+    "description": "Maintaining a sense of balance, proportion and professionalism",
+    "content": "## This was...\n\nI had listened to an interview with the authors about their approach to programming being pragmatic and why they felt this was important to be learned by programmers. I was keen to explore my programming behaviours over and above learning loops and conditionals. I put this book on my wish list and when nobody bought it, I bought it for myself.\n\nthe content of the book is entirely reflected by the title and then also a little bit more. There are often decisions, design decisions and software decisions, even human interface decisions where the decision needs to be pragmatic over correct. Humans do not operate ideally, and we need to take account of this. The book goes beyond this and talks about applying professionalism to programming and developing tradecraft. It speaks about exploring deeply one area and honing the skill to Craftsmanship.\n\n## I already knew...\n\nhaving walked in the professional world both as a mechanical engineer and as a medic professionalism is not near to me. Learning how it applies in the career of programming is really interesting to see and there's lots of translations from my previous experience.\n\n## What was new...\n\nThere were several situations where I can loosely summarise the writing as saying don't let the great be the enemy of the good. This is to say perfect may well take a long time to implement and not give you the outputs for your use case. Good enough may actually be better in that the effort has been focused on the majority case and the end use your experience is better.\n\n## I particularly liked...\n\nI felt the discussive and interesting tone, along with references to experience made the text come alive and it was fun to read. As I read it, I felt I was walking alongside the authors and learning from their stories.\n",
+    "rating": null,
+    "source_file": "The Prag Prog.md"
+  },
+  {
+    "title": "The Emporer'S New Mind",
+    "author": "Unknown",
+    "review_date": "2025-01-01",
+    "description": "Book review, The Emporer's New Mind, by Roger Penrose",
+    "content": "## This was...\n\n![New Clothes](/images/Literature/NewMind.JPG)\n\n## This was...\n\nRoger Penrose was maths comrade in arms to Stephen Hawking. This means they challenged each other's maths during their careers. This would be like a sparring partner but for mathematics. This book is Roger Penrose argument that there will never be true artificial intelligence.\n\nAs many authors in this area do he began by exploring cheering machines, chaos theory and number theory. The book is quite dense and it took me three attempts to work through it.\n\n## I already knew...\n\nI was already aware of some basic number theory, some basic chaos theory and the arguments surrounding artificial intelligence. The exploration of these topics I felt was probably deeper than they really needed to be and the pros was a little heavier than it had to be. However, the work is a thorough exploration of the premises leading to the conclusion.\n\n## What was new...\n\nIt felt satisfying to be told that that would never be artificial intelligence in the sense that we see human like behaviour and speech with a full self-awareness as we see on the television. It made me feel unique as a human.\n\nEven the most advanced large language models currently are at the end of the day just statistical guessing tools and do not have self-awareness as such. They often speak in the first person but this is a result of statistical guessing, and not an outcome of self-awareness.\n\nAs a counterpoint I might propose that since I am a neural network and large language models are artificial neural networks what then is the difference? If they are statistical guessing tools, then am I not to also a statistical guessing tool?\n\nThe chief defence is that I know for sure that I have self-awareness. But again the counterpoint of this is that some animals also appear to have some level of self-awareness, yet also some humans fail to truly demonstrate a reflective and self-aware ability? This is to say that biological neural networks have a broad range which overlaps with the output we see from artificial neural networks that are large language models.\n\n## I particularly liked...\n\nThe tone of the text has a gentle excitability and mild opinionatedness which both contribute to the voice.\n\nIt still, however, is a very weighty tome and took me three attempts to complete.\n",
+    "rating": null,
+    "source_file": "The Emporer's New Mind.md"
+  },
+  {
+    "title": "Introduction To Graph Theory",
+    "author": "Unknown",
+    "review_date": "2025-01-01",
+    "description": "Ken said I should read this with a notepad",
+    "content": "## This was...\n\nThis is an introduction to graph theory from the basics. It was nice to have a walk-through what is a graph with simple basic rules, and exercises at the end of each section. My brother advised I read this book with a notebook in hand, and so I did. He was right during things graphically made things much easier to understand. I didn't do all of the exercises but I did do some.\n\n## I already knew...\n\nI knew that graphs were made of nodes and edges and can be in two or three dimensional space however this is not a feature of recording graphs. Computer computers often will not have any dimensional representation of graphs besides a list of notes and edges. This was not a very long book, but it did take some time to get through it.\n\n![Author reading 'Introduction to Graph theory'](/images/Literature/Graph_theory.JPG \"A fun graphical exercise!\")\n\n## What was new...\n\nThe book was very revealing and gave me some great solutions to some programming problems when I worked through the Python track on the exorcism website. I am beginning to see how graph theory provides a solution to a number of problems, both in the physical world and with data handling. I have listened to some podcasts about graph databases, and knowledge graphs.\n\n## I particularly liked...\n\nI particularly liked the exercise exercises that you could do to form and build your understanding.\n",
+    "rating": null,
+    "source_file": "Introduction to Graph Theory.md"
+  },
+  {
+    "title": "Mathematics For Ai",
+    "author": "Unknown",
+    "review_date": "2025-01-01",
+    "description": "Book review, Mathematics for AI, by Tividar Danke",
+    "content": "## This was...\n\nThis book was a few years in the making and it was released in stages. It covers the maths to some depth and the author explains key points.\n\n## I already knew...\n\nI was already familiar with some of the basic linear algebra, and also some of the calculus. This material was denser and harder to go through. I didn't complete the whole book, but then I haven't had all of the chapters yet.\n\n## What was new...\n\nI was not familiar with some of the probability theory, but machine learning is Glorified statistics and Inference might be better described as statistical guessing.\n\n## I particularly liked...\n\nAt some point you have to dive into the depths and this was deep.\n",
+    "rating": null,
+    "source_file": "Mathematics for AI.md"
+  },
+  {
+    "title": "The 100 Page Machine Learning Handbook",
+    "author": "Unknown",
+    "review_date": "2025-01-01",
+    "description": "Book review, The 100 Page Machine Learning Handbook, by Andriy Burkov",
+    "content": "## This was...\n\nThis is a small and light book which covers all of the basic fields of machine learning maths. To achieve this, it does it succinctly and lightly using dense mathematical notation.\n\n## I already knew...\n\nI already knew some of the basic calculus, but the methods described here were largely new to me.\n\n## What was new...\n\nEverything from regression to support vector machines to deep learning. Reading this book requires some attention so it's not bedtime reading. I would recommend taking notes if you are reading through this and possibly implementing some code that does some of these. You will find Python libraries for some of this.\n\n## I particularly liked...\n\nI like it that the vast field of machine learning can be covered in such a light book. This was still quite succinct and dense.\n",
+    "rating": null,
+    "source_file": "The 100 Page Machine Learning Handbook.md"
+  },
+  {
+    "title": "Python Crash Course",
+    "author": "Unknown",
+    "review_date": "2025-01-01",
+    "description": "Book review, Python Crash Course, by Eric Mathes",
+    "content": "## This was...\n\nThis is the all-time classic introduction book to Python and is where I started. I listen to a podcast interview featuring Eric Mathis, who is a teacher. He described learning programming as best done through projects and in this book he gives you three projects.\n\nIn the first project you use play game to create a simple arcade space invaders game. This helped me explore the game loop graphic boundaries, high scores and edge cases.\n\nThe second project was the use of Matt plot Lib and Webb API is to explore probabilities and statistics. I learned about application programming interfaces graph representation using plot and Matt plot live we also covered installing and loading, separated value data and a dose of probability. This was a nice exploration of additional topics above the opening chapters.\n\nThe third project was writing of a learning log using the Django Python web framework by the time I got to this I had already explored the pelican python static blog to it and also SQL alchemy, ginger to templating and Flask. I did not complete this chapter but would love to go back just for the learning.\n\n## I already knew...\n\nI came to Python mainly knowing some C+ plus having worked through.\"jumping into C++\"by Alex Allain. This previous work taught me a good deal about pointers references, loop structures and important programming basics such as modules, imports and other basic structures. This means when I came to Python and found I did not need to use pointers. I still understood what was going on in the background. I was aware of the need to allocate and delicate memory and what the difference was between a shallow and a deep copy. I feel this substantially improved what I could get from this basic Python introduction.\n\n## What was new...\n\nI certainly learnt more about using list slices. I learned a bit about using pie game and also Matt plot Lib, plot Lee. I would like to go back and complete the Django work.\n\n## I particularly liked...\n\nI really liked that. This was a straightforward project based introduction to programming in Python. Note that this was before large language models so all the basic mistakes and error solving I did on my own. I feel this gave me an advantage in learning Python.\n",
+    "rating": null,
+    "source_file": "Python Crash Course.md"
+  },
+  {
+    "title": "Goedel Escher Bach",
+    "author": "Unknown",
+    "review_date": "2025-01-01",
+    "description": "Book review, Goedel Escher Bach",
+    "content": "## This was...\n\nThis book originally came to fame in the 90s. Now 20 years later due to the rise in artificial intelligence this book has become of conversation and interest again.\n\nFundamentally, the author makes reference to systems that refer to themselves. He sees this pattern in the work of Godel Escher and Bach. Godel makes some mathematical statements which refer to versions of themselves, Escher similar makes self referencing images, and Bach appears to make musical patterns which reference parts of themselves\n\nSince humans are able to reference to themselves where we do not see this elsewhere the author suggests that self referencing is a key function of artificial intelligence. While he spots that these systems are not intelligent he implies self reference may be emergent from a complex system.\n\n## I already knew...\n\nI had made thoughts about how humans are pattern recognising systems, recognising patterns within and without and overlapping each other, that intelligence was about pattern recognition.\n\n![Author reading 'Godel Escher Bach'](/images/Literature/GEBscale.JPG \"A heavy going read\")\n\nWhile this is not widely stated, it is clear that matrix maths enables pattern recognition much more effectively than other systems. We are of course neural networks which are functionally Matrix maths.\n\n## What was new...\n\nI learned a lot about Godel, Escher and Bach, And had more food for thought about understanding what is intelligence when it is synthetic.\n\n## I particularly liked...\n\nThe book carries conversations between a tortoise and a hair and in dialogue makes an entertaining description of the underlying points. If this weighty tome is too much for you, you might go a considerable way to understanding it simply by reading the comedy dialogues between these  characters.\n\n\n",
+    "rating": null,
+    "source_file": "Goedel Escher Bach.md"
+  },
+  {
+    "title": "Mission Python",
+    "author": "Unknown",
+    "review_date": "2025-01-01",
+    "description": "Book review, Mission Python, by Sean McManus",
+    "content": "## This was...\n\nThis was a great tutorial book that taught me about some Python and was a great tool as I worked through it with my son. I used it as an exercise in teaching Python to him. I do not think he would be able to code in Python as he can still barely type, however we demonstrated that we can arrange instructions to perform computer game behaviours.\n\n## I already knew...\n\nI was already familiar with a large body of Python code having completed other books and online courses. This really explored the application of those learnings. There was also a really useful graphic set.\n\n## What was new...\n\nI had not used pygame before this. I learned about window handling sounds and events.\n\n## I particularly liked...\n\nThe expectation in the book was that you would copy and type out all of the code. Programmers of past often site this as one of the main ways of learning programming. I think in the years ahead typing out programs in this way we'll just no longer be done by trainees. This means the future cohort of programmers will be different by nature to those in the past.\n\nEven I in this code, use the code from The Hub repo. We made some changes here and there to demonstrate that we could control elements in the game to our own wishes and plans.\n\nI think this speaks to the nature of the changing landscape of software development currently and in the future.\n",
+    "rating": null,
+    "source_file": "Mission Python.md"
+  },
+  {
+    "title": "Python Interviews",
+    "author": "Unknown",
+    "review_date": "2025-01-01",
+    "description": "discussion with voices in the Python community",
+    "content": "## This was...\n\nThe Python community is huge and there are key luminaries in it. Michael Driscoll made an exercise of interviewing a dozen also key Python figures and including the interviews in a book. Being an outsider to the community this gave me a great insight into who the players are what they're interests are and what Python can do in its entirety.\n\nIt also gave me some great insight about where people feel Python is going to go, and some history about where Python has come from and the difficulty with the change from Python 2 to Python three.\n\n## I already knew...\n\nI actually knew very little about the Python community at large.\n\n## What was new...\n\nI learned a little bit about the backstory behind all of the characters leading the Python world. Some of them were a little bit like me and some really weren't this was both encouraging and also mind opening. I learned that everyone can contribute, and when everyone does, we are all the better.\n\n## I particularly liked...\n\nAsking these key figures about their personal interests and what they like and where they want to go was really interesting. There are some great players with some great ideas and great ability to outwork them. I feel that Python has a great future and I'm really pleased that I read this book.\n",
+    "rating": null,
+    "source_file": "Python Interviews.md"
+  }
+]

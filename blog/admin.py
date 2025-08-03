@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Author, Book, Review
+from .models import Author, Book, Review, BackdropImage
 
 
 @admin.register(Author)
@@ -82,18 +82,18 @@ class BookAdmin(admin.ModelAdmin):
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     """Admin interface for Review model with moderation features."""
-    list_display = ['book', 'reviewer', 'rating_stars', 'title', 'is_public', 'created_at']
-    list_filter = ['rating', 'is_public', 'created_at', 'book__genre']
+    list_display = ['book', 'reviewer', 'rating_stars', 'title', 'status', 'is_public', 'created_at']
+    list_filter = ['status', 'rating', 'is_public', 'created_at', 'book__genre']
     search_fields = ['title', 'content', 'book__title', 'reviewer__username']
     readonly_fields = ['created_at', 'updated_at']
-    list_editable = ['is_public']
-    actions = ['make_public', 'make_private']
+    list_editable = ['status', 'is_public']
+    actions = ['make_published', 'make_draft', 'make_archived', 'make_public', 'make_private']
     fieldsets = (
         ('Review Information', {
             'fields': ('book', 'reviewer', 'title', 'content')
         }),
-        ('Rating & Visibility', {
-            'fields': ('rating', 'is_public')
+        ('Rating & Status', {
+            'fields': ('rating', 'status', 'is_public')
         }),
         ('Timestamps', {
             'fields': ('created_at', 'updated_at'),
@@ -109,6 +109,24 @@ class ReviewAdmin(admin.ModelAdmin):
         )
     rating_stars.short_description = 'Rating'
 
+    def make_published(self, request, queryset):
+        """Action to publish selected reviews."""
+        updated = queryset.update(status='published')
+        self.message_user(request, f'{updated} reviews were successfully published.')
+    make_published.short_description = "Publish selected reviews"
+
+    def make_draft(self, request, queryset):
+        """Action to make selected reviews drafts."""
+        updated = queryset.update(status='draft')
+        self.message_user(request, f'{updated} reviews were successfully made drafts.')
+    make_draft.short_description = "Make selected reviews drafts"
+
+    def make_archived(self, request, queryset):
+        """Action to archive selected reviews."""
+        updated = queryset.update(status='archived')
+        self.message_user(request, f'{updated} reviews were successfully archived.')
+    make_archived.short_description = "Archive selected reviews"
+
     def make_public(self, request, queryset):
         """Action to make selected reviews public."""
         updated = queryset.update(is_public=True)
@@ -120,3 +138,48 @@ class ReviewAdmin(admin.ModelAdmin):
         updated = queryset.update(is_public=False)
         self.message_user(request, f'{updated} reviews were successfully made private.')
     make_private.short_description = "Make selected reviews private"
+
+
+@admin.register(BackdropImage)
+class BackdropImageAdmin(admin.ModelAdmin):
+    """Admin interface for BackdropImage model with image processing features."""
+    list_display = ['name', 'processing_style', 'is_active', 'image_preview', 'created_at']
+    list_filter = ['processing_style', 'is_active', 'created_at']
+    search_fields = ['name']
+    readonly_fields = ['created_at', 'updated_at', 'processed_image']
+    list_editable = ['is_active', 'processing_style']
+    actions = ['reprocess_images']
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('name', 'original_image', 'processing_style')
+        }),
+        ('Processing', {
+            'fields': ('processed_image', 'is_active')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+
+    def image_preview(self, obj):
+        """Display a preview of the backdrop image."""
+        if obj.processed_image:
+            return format_html(
+                '<img src="{}" style="max-height: 100px; max-width: 150px;" />',
+                obj.processed_image.url
+            )
+        elif obj.original_image:
+            return format_html(
+                '<img src="{}" style="max-height: 100px; max-width: 150px; opacity: 0.7;" />',
+                obj.original_image.url
+            )
+        return 'No image'
+    image_preview.short_description = 'Preview'
+
+    def reprocess_images(self, request, queryset):
+        """Action to reprocess selected backdrop images."""
+        for backdrop in queryset:
+            backdrop.process_image()
+        self.message_user(request, f'{queryset.count()} backdrop images were reprocessed.')
+    reprocess_images.short_description = "Reprocess selected backdrop images"

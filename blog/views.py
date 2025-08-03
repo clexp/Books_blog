@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q, Avg, Count
 from django.core.paginator import Paginator
-from .models import Book, Author, Review
+from .models import Book, Author, Review, BackdropImage
 
 
 class BookListView(ListView):
@@ -22,7 +22,7 @@ class BookListView(ListView):
         context = super().get_context_data(**kwargs)
         context['genres'] = Book.GENRE_CHOICES
         context['total_books'] = Book.objects.count()
-        context['total_reviews'] = Review.objects.filter(is_public=True).count()
+        context['total_reviews'] = Review.objects.filter(is_public=True, status='published').count()
         return context
 
 
@@ -42,8 +42,8 @@ class BookDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         book = context['book']
         
-        # Get public reviews for this book
-        reviews = book.reviews.filter(is_public=True).select_related('reviewer')
+        # Get published public reviews for this book
+        reviews = book.reviews.filter(is_public=True, status='published').select_related('reviewer')
         context['reviews'] = reviews
         
         # Calculate statistics
@@ -86,8 +86,8 @@ class ReviewDetailView(DetailView):
     context_object_name = 'review'
     
     def get_queryset(self):
-        """Only show public reviews."""
-        return Review.objects.filter(is_public=True).select_related('book', 'reviewer')
+        """Only show published public reviews."""
+        return Review.objects.filter(is_public=True, status='published').select_related('book', 'reviewer')
 
 
 class GenreBookListView(ListView):

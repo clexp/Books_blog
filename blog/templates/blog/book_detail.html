@@ -255,6 +255,41 @@
         font-size: 1rem;
         line-height: 1.7;
       }
+      
+      .review-with-image {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      
+      .review-text {
+        flex-grow: 1;
+      }
+      
+      .review-image {
+        flex-shrink: 0;
+        width: 30%;
+        max-width: 200px;
+      }
+      
+      .review-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      
+      @media (max-width: 768px) {
+        .review-with-image {
+          flex-direction: column;
+        }
+        
+        .review-image {
+          width: 100%;
+          max-width: none;
+          margin-bottom: 15px;
+        }
+      }
 
       .no-reviews {
         text-align: center;
@@ -407,7 +442,20 @@
           <div class="review-meta">
             By {{ review.reviewer.username }} on {{ review.created_at|date:"F j, Y" }}
           </div>
-          <div class="review-content">{{ review.content|linebreaks }}</div>
+          <div class="review-content">
+            {% if review.book_images %}
+            <div class="review-with-image">
+              <div class="review-text">
+                {{ review.content|linebreaks }}
+              </div>
+              <div class="review-image">
+                <img src="{{ review.book_images.url }}" alt="Book image for {{ review.title }}" />
+              </div>
+            </div>
+            {% else %}
+            {{ review.content|linebreaks }}
+            {% endif %}
+          </div>
         </div>
         {% empty %}
         <div class="no-reviews">
