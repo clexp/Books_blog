@@ -3,34 +3,94 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Review Blog</title>
+    <title>Literary Chronicles - Book Review Blog</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Georgia", serif;
         margin: 0;
-        padding: 20px;
-        background-color: #f5f5f5;
+        padding: 0;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        line-height: 1.6;
       }
+
+      /* Header Styles */
+      .site-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .site-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .site-nav a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        margin-left: 30px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .site-nav a:hover {
+        color: white;
+      }
+
       .container {
         max-width: 1200px;
         margin: 0 auto;
+        padding: 20px;
       }
+
       .hero {
         text-align: center;
         margin-bottom: 40px;
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       }
+
       .hero h1 {
-        color: #333;
-        font-size: 2.5rem;
+        color: #2d3748;
+        font-size: 3rem;
+        margin: 0 0 20px 0;
+        font-weight: bold;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
+
+      .hero p {
+        color: #4a5568;
+        font-size: 1.2rem;
+        margin: 0;
+      }
+
       .search-section {
         background: white;
-        padding: 30px;
-        border-radius: 8px;
+        padding: 40px;
+        border-radius: 20px;
         margin-bottom: 30px;
         text-align: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       }
+
       .search-form {
         display: flex;
         justify-content: center;
@@ -38,61 +98,86 @@
         gap: 15px;
         flex-wrap: wrap;
       }
+
       .search-input {
-        padding: 15px 20px;
-        border: 2px solid #ddd;
+        padding: 15px 25px;
+        border: 2px solid #e2e8f0;
         border-radius: 25px;
         font-size: 1.1rem;
         outline: none;
-        transition: border-color 0.3s ease;
-        min-width: 300px;
+        transition: all 0.3s ease;
+        min-width: 350px;
+        background: white;
       }
+
       .search-input:focus {
         border-color: #4f46e5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
       }
+
       .search-button {
-        background: #4f46e5;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
         color: white;
         border: none;
         padding: 15px 30px;
         border-radius: 25px;
         font-size: 1.1rem;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        font-weight: 500;
       }
+
       .search-button:hover {
-        background: #3730a3;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
       }
+
       .stats {
         background: white;
-        padding: 20px;
-        border-radius: 8px;
+        padding: 30px;
+        border-radius: 20px;
         margin-bottom: 30px;
         text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       }
+
+      .stats p {
+        color: #4a5568;
+        font-size: 1.1rem;
+        margin: 0;
+      }
+
       .books-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
       }
+
       .book-card {
         background: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         display: flex;
-        gap: 15px;
+        gap: 20px;
         align-items: flex-start;
         flex-direction: row;
+        transition: all 0.3s ease;
+      }
+
+      .book-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
       }
       
       .book-cover-thumb {
         flex-shrink: 0;
-        width: 80px;
-        height: 120px;
-        border-radius: 6px;
+        width: 100px;
+        height: 140px;
+        border-radius: 10px;
         overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       }
       
       .book-cover-thumb img {
@@ -104,44 +189,149 @@
       .book-cover-thumb .placeholder {
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #999;
-        font-size: 0.8rem;
+        color: white;
+        font-size: 0.9rem;
         text-align: center;
         padding: 10px;
+        font-weight: 500;
       }
       
       .book-info {
         flex-grow: 1;
       }
+
       .book-title {
-        margin: 0 0 10px 0;
-        color: #333;
+        margin: 0 0 15px 0;
+        color: #2d3748;
+        font-size: 1.3rem;
+        font-weight: bold;
       }
+
       .book-title a {
-        color: #0066cc;
+        color: #4f46e5;
         text-decoration: none;
+        transition: color 0.3s ease;
       }
+
+      .book-title a:hover {
+        color: #7c3aed;
+      }
+
       .book-author {
         color: #666;
         margin-bottom: 10px;
+        font-weight: 500;
       }
+
       .book-genre {
         color: #888;
         font-size: 0.9rem;
+        margin-bottom: 15px;
       }
+
+      .book-description {
+        color: #4a5568;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+
+      .book-reviews {
+        color: #7c3aed;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
       .empty-state {
         text-align: center;
-        padding: 60px 20px;
+        padding: 80px 40px;
         background: white;
-        border-radius: 8px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        grid-column: 1 / -1;
+      }
+
+      .empty-state h3 {
+        color: #2d3748;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      .empty-state p {
+        color: #4a5568;
+        font-size: 1.1rem;
+      }
+
+      /* Footer Styles */
+      .site-footer {
+        background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+        color: white;
+        padding: 40px 0 20px 0;
+        margin-top: 60px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      .footer-content p {
+        margin: 0;
+        opacity: 0.8;
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .site-nav a {
+          margin: 0 15px;
+        }
+
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .search-input {
+          min-width: 280px;
+        }
+
+        .books-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .book-card {
+          padding: 20px;
+        }
+
+        .container {
+          padding: 10px;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- Site Header -->
+    <header class="site-header">
+      <div class="header-content">
+        <h1 class="site-title">📚 Literary Chronicles</h1>
+        <nav class="site-nav">
+          <a href="{% url 'blog:home' %}">Home</a>
+          <a href="{% url 'blog:search' %}">Search</a>
+          <a href="/admin/">Admin</a>
+        </nav>
+      </div>
+    </header>
+
     <div class="container">
       <div class="hero">
         <h1>📚 Literary Chronicles</h1>
@@ -174,6 +364,15 @@
       <div class="books-grid">
         {% for book in books %}
         <div class="book-card">
+          <div class="book-cover-thumb">
+            {% if book.cover_image %}
+            <img src="{{ book.cover_image.url }}" alt="{{ book.title }} cover" />
+            {% else %}
+            <div class="placeholder">
+              <span>{{ book.title|truncatewords:2 }}</span>
+            </div>
+            {% endif %}
+          </div>
           <div class="book-info">
             <h3 class="book-title">
               <a href="{% url 'blog:book-detail' book.slug %}"
@@ -183,18 +382,9 @@
             <div class="book-author">by {{ book.author.name }}</div>
             <div class="book-genre">{{ book.get_genre_display }}</div>
             {% if book.description %}
-            <p>{{ book.description|truncatewords:20 }}</p>
+            <div class="book-description">{{ book.description|truncatewords:20 }}</div>
             {% endif %}
-            <p>{{ book.reviews.count }} reviews</p>
-          </div>
-          <div class="book-cover-thumb">
-            {% if book.cover_image %}
-            <img src="{{ book.cover_image.url }}" alt="{{ book.title }} cover" />
-            {% else %}
-            <div class="placeholder">
-              <span>{{ book.title|truncatewords:2 }}</span>
-            </div>
-            {% endif %}
+            <div class="book-reviews">{{ book.reviews.count }} review{% if book.reviews.count != 1 %}s{% endif %}</div>
           </div>
         </div>
         {% empty %}
@@ -208,5 +398,12 @@
         {% endfor %}
       </div>
     </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p>&copy; 2025 Literary Chronicles. Sharing the love of books, one review at a time.</p>
+      </div>
+    </footer>
   </body>
 </html>

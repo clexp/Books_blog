@@ -14,6 +14,62 @@
         line-height: 1.6;
       }
 
+      /* Header Styles */
+      .site-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .site-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .site-nav a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        margin-left: 30px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .site-nav a:hover {
+        color: white;
+      }
+
+      /* Footer Styles */
+      .site-footer {
+        background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+        color: white;
+        padding: 40px 0 20px 0;
+        margin-top: 60px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      .footer-content p {
+        margin: 0;
+        opacity: 0.8;
+      }
+
       .container {
         max-width: 1200px;
         margin: 0 auto;
@@ -268,8 +324,9 @@
       
       .review-image {
         flex-shrink: 0;
-        width: 30%;
-        max-width: 200px;
+        width: 40%;
+        max-width: 300px;
+        min-width: 200px;
       }
       
       .review-image img {
@@ -286,8 +343,8 @@
         
         .review-image {
           width: 100%;
-          max-width: none;
-          margin-bottom: 15px;
+          max-width: 400px;
+          margin: 0 auto 15px auto;
         }
       }
 
@@ -303,6 +360,15 @@
       }
 
       @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .site-nav a {
+          margin: 0 15px;
+        }
+
         .book-header {
           flex-direction: column;
           align-items: center;
@@ -334,6 +400,18 @@
     </style>
   </head>
   <body>
+    <!-- Site Header -->
+    <header class="site-header">
+      <div class="header-content">
+        <h1 class="site-title">📚 Literary Chronicles</h1>
+        <nav class="site-nav">
+          <a href="{% url 'blog:home' %}">Home</a>
+          <a href="{% url 'blog:search' %}">Search</a>
+          <a href="/admin/">Admin</a>
+        </nav>
+      </div>
+    </header>
+
     <div class="container">
       <a href="{% url 'blog:home' %}" class="back-link"> ← Back to Books </a>
 
@@ -465,5 +543,12 @@
         {% endfor %}
       </div>
     </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p>&copy; 2025 Literary Chronicles. Sharing the love of books, one review at a time.</p>
+      </div>
+    </footer>
   </body>
 </html>
